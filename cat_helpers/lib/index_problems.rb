@@ -98,8 +98,8 @@ def gold_cat_toys
   
   # Get cost within the range of: 95..600
   execute(<<-SQL)
-    DROP INDEX cattoys_toy_id;
-    CREATE INDEX cattoys_cat_id ON cattoys(cat_id);
+    DROP INDEX cats_color;
+    CREATE INDEX cats_color ON cats(color);
     
     EXPLAIN
       SELECT
@@ -115,7 +115,7 @@ def gold_cat_toys
   SQL
 end
 
-gold_cat_toys
+# gold_cat_toys
 
 def who_owns_thumbs_up
   # This query lists the name of the 'Pink' colored cat who 
@@ -125,6 +125,8 @@ def who_owns_thumbs_up
 
   # Get cost within the range of: 4..150
   execute(<<-SQL)
+    CREATE INDEX cattoys_cat_id ON cattoys(cat_id);
+
     EXPLAIN
       SELECT
         cats.name, cats.color
@@ -138,6 +140,8 @@ def who_owns_thumbs_up
         toys.name = 'Thumbsup' AND cats.color = 'Pink';
   SQL
 end
+
+who_owns_thumbs_up
 
 def popular_toys
   # Jet the cat has a ton of toys! This query shows the toys Jet has at least two copies of. 

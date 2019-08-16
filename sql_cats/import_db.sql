@@ -1,21 +1,21 @@
 DROP TABLE cats, toys, cattoys;
 
 CREATE TABLE cats (
-    id SERIAL PRIMARY KEY,
+    id INT PRIMARY KEY,
     name TEXT NOT NULL,
     color TEXT NOT NULL,
     breed TEXT NOT NULL
 );
 
 CREATE TABLE toys (
-    id SERIAL PRIMARY KEY,
+    id INT PRIMARY KEY,
     price FLOAT NOT NULL,
     color TEXT NOT NULL,
     name TEXT NOT NULL
 );
 
 CREATE TABLE cattoys (
-    id SERIAL PRIMARY KEY,
+    id INT PRIMARY KEY,
     cat_id INT REFERENCES cats(id),
     toy_id INT REFERENCES toys(id)
 );
